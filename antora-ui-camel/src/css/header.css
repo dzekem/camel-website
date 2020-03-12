@@ -163,11 +163,25 @@ body {
   margin: 0.25rem 0;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1023px) and (min-width: 480px) {
   .navbar-brand .navbar-item {
     display: flex;
     align-items: flex-start;
     flex-flow: column;
+  }
+
+  .navbar-item.navbar-topics,
+  .navbar-link.navbar-topics {
+    color: var(--navbar-font-color);
+  }
+
+  .navbar-item {
+    font-weight: bold;
+  }
+
+  .navbar-dropdown .navbar-item:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--navbar-hover-font-color);
   }
 
   .navbar-menu {
@@ -177,17 +191,50 @@ body {
 
   .navbar-menu.is-active {
     display: block;
-    position: fixed;
-    height: 100%;
+    position: absolute;
+    height: calc(90vh - 6rem);
     box-shadow: 0 16px 16px 0 rgba(10, 10, 10, 0.1);
     overflow-y: auto;
     top: 4rem;
+    left: auto;
     right: 0;
   }
 
   .navbar-menu a.navbar-item:hover,
   .navbar-menu .navbar-link:hover {
     background-color: var(--navbar-menu-hover-background);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .navbar-menu.is-active {
+    display: block;
+    position: absolute;
+    height: calc(100vh - 4rem);
+    box-shadow: 0 16px 16px 0 rgba(10, 10, 10, 0.1);
+    overflow-y: auto;
+    top: 4rem;
+    left: 0;
+    right: 0;
+  }
+
+  .navbar-item.navbar-topics,
+  .navbar-link.navbar-topics {
+    color: var(--navbar-font-color);
+  }
+
+  .navbar-item {
+    font-weight: bold;
+  }
+
+  .navbar-dropdown .navbar-item:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--navbar-hover-font-color);
+  }
+
+  .navbar-menu {
+    background: var(--navbar-menu-background);
+    padding: 0.5rem 0;
   }
 }
 
@@ -322,11 +369,15 @@ body {
 }
 
 #search_results {
-  top: 3rem;
+  top: 3.31rem;
   background: #fffe;
   padding: 0.5rem;
   text-align: left;
   box-shadow: 0.1px 0.2em 2.5em #c4c4c4;
+  position: absolute;
+  margin-right: 10px;
+  overflow-y: auto;
+  max-height: 80vh;
 }
 
 .result_header {
@@ -366,5 +417,16 @@ body {
 
   .navbar-tools .brand-icon {
     margin: 1rem 0.8rem;
+  }
+}
+
+/* Styling for mobile use */
+@media (max-width: 610px) {
+  #search {
+    display: none;
+  }
+
+  #social-media {
+    display: none;
   }
 }
